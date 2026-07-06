@@ -79,8 +79,3 @@ material-selection-optimizer/
 ```
 
 
-## Possible extensions
-- Add a materials-substitution graph (Dijkstra) for "closest alternative if X is unavailable"
-- Radar chart per material using Chart.js for visual property comparison
-- User accounts + saved comparison sessions (adds a second SQL table + auth)
-- Export ranked results to PDF/Excel report
