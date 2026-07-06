@@ -6,25 +6,7 @@ cost, corrosion resistance, etc.).
 
 **Stack:** Flask (Python) REST API · MySQL · vanilla HTML/CSS/JS frontend
 
-## Why this project is interesting (for interviews)
 
-Most "material selection" tools are just a filtered SQL query. This one runs
-an actual multi-criteria decision-making (MCDM) pipeline:
-
-1. **Skyline / Pareto-dominance filtering** (`algorithms.py::skyline_filter`)
-   A material is only kept if no other material beats it on *every* selected
-   criterion at once. Classic multi-objective database algorithm (same idea
-   behind "find hotels that are cheap AND close to the beach"). O(n²·k).
-
-2. **TOPSIS ranking** (`algorithms.py::topsis_rank`)
-   Vector-normalizes the decision matrix, applies user-supplied weights,
-   computes each material's Euclidean distance to an ideal and anti-ideal
-   solution, and ranks by relative closeness. O(n·k).
-
-3. **Min-heap Top-K selection** (`algorithms.py::top_k_heap`)
-   Rather than fully sorting every candidate, a size-K min-heap keeps only
-   the current best K as it streams through — O(n log k) instead of
-   O(n log n).
 
 ## Setup
 
