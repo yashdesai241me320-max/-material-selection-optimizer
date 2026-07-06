@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Material Selection Optimizer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="blueprint-grid"></div>
+
+<header class="site-header">
+  <div class="crosshair tl"></div>
+  <div class="crosshair tr"></div>
+  <p class="eyebrow">MECHANICAL ENGINEERING · DECISION SUPPORT SYSTEM</p>
+  <h1>Material Selection Optimizer</h1>
+  <p class="subtitle">
+    Skyline dominance filtering narrows the field to Pareto-optimal candidates.
+    TOPSIS ranks them against your weighted criteria. A min-heap pulls the top-K.
+  </p>
+</header>
+
+<main class="layout">
+
+  <!-- CONTROL PANEL -->
+  <section class="panel control-panel">
+    <div class="panel-label">
+      <span class="index-tag">01</span> DEFINE CRITERIA
+    </div>
+
+    <label class="field">
+      <span class="field-label">Material category</span>
+      <select id="categorySelect">
+        <option value="All">All categories</option>
+      </select>
+    </label>
+
+    <div id="criteriaList" class="criteria-list"></div>
+
+    <button id="addCriterionBtn" class="btn-ghost">+ Add criterion</button>
+
+    <label class="field">
+      <span class="field-label">Show top</span>
+      <input type="number" id="topKInput" min="1" max="20" value="5" />
+    </label>
+
+    <button id="runBtn" class="btn-primary">RUN OPTIMIZATION</button>
+
+    <p class="api-status" id="apiStatus">Connecting to backend…</p>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="panel results-panel">
+    <div class="panel-label">
+      <span class="index-tag">02</span> RANKED RESULTS
+    </div>
+
+    <div id="summaryStrip" class="summary-strip hidden">
+      <div class="summary-stat">
+        <span class="summary-value" id="totalCandidates">–</span>
+        <span class="summary-tag">candidates evaluated</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-value" id="paretoCount">–</span>
+        <span class="summary-tag">pareto-optimal</span>
+      </div>
+    </div>
+
+    <div id="emptyState" class="empty-state">
+      <p>No results yet.</p>
+      <p class="muted">Set your criteria and weights on the left, then run the optimizer.</p>
+    </div>
+
+    <div id="resultsList" class="results-list"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p><strong>Algorithm notes —</strong> Skyline filter: O(n²) pairwise dominance check for Pareto-optimal set.
+  TOPSIS: vector-normalized weighted distance from ideal/anti-ideal solution. Top-K selection: O(n log k) min-heap.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
