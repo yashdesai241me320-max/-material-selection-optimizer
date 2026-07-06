@@ -78,12 +78,6 @@ material-selection-optimizer/
 └── README.md
 ```
 
-## Suggested resume bullet
-
-> Built a full-stack material selection optimizer (Flask, MySQL, JS) implementing
-> Pareto-dominance skyline filtering and TOPSIS multi-criteria ranking with
-> min-heap top-K selection, enabling engineers to trade off strength, weight,
-> cost, and corrosion resistance across 25+ engineering materials.
 
 ## Possible extensions
 - Add a materials-substitution graph (Dijkstra) for "closest alternative if X is unavailable"
